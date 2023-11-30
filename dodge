@@ -1,0 +1,64 @@
+#!/bin/sh
+
+USAGES='
+Basic usage:
+dodge <image_file_path> <recovered_object_folder_path>
+
+Advanced usage for those wanting to control the size of the carved out objects:
+dodge <image_file_path> <recovered_object_folder_path> <byte_count_to_carve_out>
+'
+
+DEFAULT_BYTE_COUNT_TO_CARVE_OUT=65536
+
+output_interesting_offsets_in_disk_image(){
+  grep -b -o -a -- '-----BEGIN PGP PRIVATE KEY BLOCK-----' "$1" |
+    cut -d : -f 1;}
+
+save_found_artifact(){
+  image_file_path="$1"
+  offset_in_disk_image=$2
+  recovered_object_folder="$3"
+  byte_count_to_carve_out="$4"
+  dd if="$image_file_path" ibs=1 skip=$offset_in_disk_image \
+    count=$byte_count_to_carve_out \
+    of="$recovered_object_folder/found_at_offset_$interesting_offset" \
+    >/dev/null 2>&1;}
+
+assert_usability_of_recovered_object_folder(){
+  mkdir -p "$1" 2>/dev/null
+  if test ! -d "$1" || test ! -r "$1" || test ! -w "$1" || test ! -e "$1"; then
+    echo unusable proposed folder for recovered objects: "$1"
+    echo no point doing a resource intensive search with nowhere to put results
+    exit 1; fi;}
+
+assert_usability_of_image_file(){
+  if test ! -r "$1"; then
+    echo unusable image file for search: "$1"
+    echo either it does not exist or your user has insufficient permissions
+    exit 1; fi;}
+
+is_valid_positive_integer(){ echo $1 | grep '^[1-9][0-9]*$' >/dev/null;}
+
+assert_validity_of_byte_count_to_carve_out(){
+  if ! is_valid_positive_integer "$1"; then
+    echo invalid byte count: $1
+    exit 1; fi;}
+
+main(){
+  if test $# -lt 2 || test $# -gt 3; then echo "$USAGES"; exit 1; fi
+  image_file_path="$1"
+  recovered_object_folder="$2"
+  if test $# -eq 3; then
+    byte_count_to_carve_out="$3"
+  else
+    byte_count_to_carve_out=$DEFAULT_BYTE_COUNT_TO_CARVE_OUT; fi
+  assert_usability_of_recovered_object_folder "$recovered_object_folder"
+  assert_usability_of_image_file "$image_file_path"
+  assert_validity_of_byte_count_to_carve_out "$byte_count_to_carve_out"
+  interesting_offsets=`
+    output_interesting_offsets_in_disk_image "$image_file_path"`
+  for interesting_offset in $interesting_offsets; do
+    save_found_artifact "$image_file_path" $interesting_offset \
+      "$recovered_object_folder" $byte_count_to_carve_out; done;}
+
+main "$@"
