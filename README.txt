@@ -7,7 +7,7 @@ material can be recovered via forensic techniques such as file carving.
 
 === VERSION ===
 
-1.0.0
+1.0.1
 
 === USAGE ===
 
@@ -133,8 +133,8 @@ If the deleted key was by some miracle on an Ext2 filesystem you can follow the
 procedure defined in section 11.3.1 of the fantastic book at:
 https://www.linuxleo.com/Docs/LinuxLeo_4.97.pdf
 
-If you're using Ext3+ you're out of luck as they're not friendly to deleted file
-recovery based on filesystem metadata.
+If you're using Ext3 or Ext4 you're out of luck as they're not friendly to
+deleted file recovery based on filesystem metadata.
 
 3:
 
@@ -150,6 +150,18 @@ A file carver which seems to have at least some support for carving out ASCII
 armored private keys. Sadly it didn't work against the synthetic test images I
 fed it but your luck may be better.
 
+5:
+
+extendelete: https://extundelete.sourceforge.net/
+
+This tool may be able to help you if the key file was deleted from an Ext3 or
+Ext4 filesystem.
+
+During my key deletion fiasco I tried using this tool for recovery as the
+deleted key file was on an Ext4 partition. Sadly it crashed/segfaulted every
+single time I tried using it. Your luck may be better.
+
 === CHANGELOG ===
 
+v1.0.1: mention extundelete in documentation
 v1.0.0: initial implementation
