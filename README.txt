@@ -7,7 +7,7 @@ material can be recovered via forensic techniques such as file carving.
 
 === VERSION ===
 
-1.0.1
+1.0.3
 
 === USAGE ===
 
@@ -160,5 +160,7 @@ single time I tried using it. Your luck may be better.
 
 === CHANGELOG ===
 
+v1.0.3: fix documentation bugs
+v1.0.2: fix documentation bugs
 v1.0.1: mention extundelete in documentation
 v1.0.0: initial implementation
