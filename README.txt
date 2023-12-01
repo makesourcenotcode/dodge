@@ -76,7 +76,7 @@ That story is Thoroughly Entertaining. But for those short on time pages 67-75
 contain the critical details you need to try that approach as well. Page 80 of
 the slides is the approach I believe in retrospect would have been best.
 
-Namely find all offsets for the '----BEGIN PGP PRIVATE KEY BLOCK-----' bytes in
+Namely find all offsets for the '-----BEGIN PGP PRIVATE KEY BLOCK-----' bytes in
 the image, read some chunk of data from each such offset storing it in a
 temporary file, try importing that temporary file with GnuPG which shouldn't be
 bothered by any junk bytes at the end. Or worst case scenario GnuPG should
@@ -118,12 +118,9 @@ scenarios.
 
 Scalpel: https://github.com/sleuthkit/scalpel
 
-It doesn't seem to have any kin of support for OpenPGP data formats. However it
+It doesn't seem to have any kind of support for OpenPGP data formats. However it
 may be possible to feed a line to scalpel.conf approximately like:
-NONE y 65536 "----BEGIN PGP PRIVATE KEY BLOCK-----" "-----END PGP PRIVATE KEY BLOCK-----" REVERSE
-
-You may need to hex encode the header and footer bits above as it's unclear from
-my cursory inspection how the config file parser handles spaces in each column.
+asc y 65536 -----BEGIN\sPGP\sPRIVATE\sKEY\sBLOCK----- -----END\sPGP\sPRIVATE\sKEY\sBLOCK-----
 
 2:
 
