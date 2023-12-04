@@ -37,7 +37,7 @@ assert_usability_of_image_file(){
     echo either it does not exist or your user has insufficient permissions
     exit 1; fi;}
 
-is_valid_positive_integer(){ echo $1 | grep '^[1-9][0-9]*$' >/dev/null;}
+is_valid_positive_integer(){ echo $1 | grep -q '^[1-9][0-9]*$';}
 
 assert_validity_of_byte_count_to_carve_out(){
   if ! is_valid_positive_integer "$1"; then

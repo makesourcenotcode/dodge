@@ -7,7 +7,7 @@ material can be recovered via forensic techniques such as file carving.
 
 === VERSION ===
 
-1.0.3
+1.0.4
 
 === USAGE ===
 
@@ -37,8 +37,13 @@ Worst comes to worst try editing out extra bytes after any
 '-----END PGP PRIVATE KEY BLOCK-----' bytes in the recovered files.
 
 Other than maybe GnuPG during the validation phase Dodge has no dependencies on
-account of having been written in portable POSIX sh and should work out of the
-box on any UNIX like system.
+account of having been written in portable POSIX sh. We do unfortunately make
+some limited use of grep features not strictly guaranteed by POSIX but which are
+nonetheless present in Linux, FreeBSD, NetBSD, OpenBSD, DragonFlyBSD, and macOS.
+You'd have to be running this on some extremely exotic rescue OS before having
+issues due to this functionality being missing. And if that turns out to be the
+case just get GNU Coreutils from https://www.gnu.org/software/coreutils/ and
+continue on.
 
 === IMPORTANT NOTE FOR THE MORE TECHNICAL USERS WHO CAN ACT ON IT ===
 
@@ -160,6 +165,7 @@ single time I tried using it. Your luck may be better.
 
 === CHANGELOG ===
 
+v1.0.4: leverage grep more idiomatically
 v1.0.3: fix documentation bugs
 v1.0.2: fix documentation bugs
 v1.0.1: mention extundelete in documentation
