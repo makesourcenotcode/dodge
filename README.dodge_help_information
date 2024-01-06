@@ -1,6 +1,6 @@
 === SUMMARY ===
 
-version: 1.0.5
+version: 1.0.6
 
 You deleted your only copy of an OpenPGP private key file. You wonder if the key
 material can be recovered via forensic techniques such as file carving.
@@ -61,7 +61,7 @@ It's (admittedly small) Open Knowledge Set consists of:
 * the main program source file / executable file dodge licensed under
   GNU GPL v3 ( https://www.gnu.org/licenses/gpl-3.0.txt )
 * the source / built form of the documentation / Help Information Set consisting
-  of this file licensed under
+  of this README.dodge_help_information file licensed under
   GNU FDL v1.3 ( https://www.gnu.org/licenses/fdl-1.3.txt )
 
 === MOTIVATION AND DEVELOPMENT NOTES ===
@@ -166,6 +166,7 @@ single time I tried using it. Your luck may be better.
 
 === CHANGELOG ===
 
+v1.0.6: minor documentation fix
 v1.0.5: improved documentation
 v1.0.4: leverage grep more idiomatically
 v1.0.3: fix documentation bugs
