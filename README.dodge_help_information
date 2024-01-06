@@ -1,13 +1,11 @@
 === SUMMARY ===
 
+version: 1.0.5
+
 You deleted your only copy of an OpenPGP private key file. You wonder if the key
 material can be recovered via forensic techniques such as file carving.
 ( https://en.wikipedia.org/wiki/File_carving ) Happily you're in luck! Dodge
 (named after the key obsessed demon in Locke & Key show) may be able to help!
-
-=== VERSION ===
-
-1.0.4
 
 === USAGE ===
 
@@ -60,10 +58,11 @@ just for well off people with reliable Internet access. Learn more at:
 https://makesourcenotcode.github.io/freedom_respecting_technology.html
 
 It's (admittedly small) Open Knowledge Set consists of:
-* the main program source/executable file dodge
-  licensed under GNU GPL v3 ( https://www.gnu.org/licenses/gpl-3.0.txt )
-* the documentation / Help Information Set consisting of this file
-  licensed under GNU FDL v1.3 ( https://www.gnu.org/licenses/fdl-1.3.txt )
+* the main program source file / executable file dodge licensed under
+  GNU GPL v3 ( https://www.gnu.org/licenses/gpl-3.0.txt )
+* the source / built form of the documentation / Help Information Set consisting
+  of this file licensed under
+  GNU FDL v1.3 ( https://www.gnu.org/licenses/fdl-1.3.txt )
 
 === MOTIVATION AND DEVELOPMENT NOTES ===
 
@@ -80,6 +79,8 @@ https://makesourcenotcode.github.io/LispNYCSlides.pdf
 That story is Thoroughly Entertaining. But for those short on time pages 67-75
 contain the critical details you need to try that approach as well. Page 80 of
 the slides is the approach I believe in retrospect would have been best.
+
+The corresponding video may also prove amusing: https://vimeo.com/341007205
 
 Namely find all offsets for the '-----BEGIN PGP PRIVATE KEY BLOCK-----' bytes in
 the image, read some chunk of data from each such offset storing it in a
@@ -165,6 +166,7 @@ single time I tried using it. Your luck may be better.
 
 === CHANGELOG ===
 
+v1.0.5: improved documentation
 v1.0.4: leverage grep more idiomatically
 v1.0.3: fix documentation bugs
 v1.0.2: fix documentation bugs
