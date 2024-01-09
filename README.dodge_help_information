@@ -1,6 +1,6 @@
 === SUMMARY ===
 
-version: 1.0.6
+version: 1.0.7 | home: https://github.com/makesourcenotcode/dodge
 
 You deleted your only copy of an OpenPGP private key file. You wonder if the key
 material can be recovered via forensic techniques such as file carving.
@@ -166,6 +166,7 @@ single time I tried using it. Your luck may be better.
 
 === CHANGELOG ===
 
+v1.0.7: minor documentation improvement
 v1.0.6: minor documentation fix
 v1.0.5: improved documentation
 v1.0.4: leverage grep more idiomatically
